@@ -2,6 +2,8 @@
 <div class ="container">
 	<div class = "col-md-12">
 		<h1>Dashboard</h1>
+		<!--Devise Welcome message from: https://stackoverflow.com/questions/4149326/rails-devise-get-object-of-the-currently-logged-in-user -->
+		<h2>Welcome <br> <%= current_user.email %></h2>
 		<hr>
 	</div>
 
@@ -26,7 +28,7 @@
 	</div>
 	<div class ="col-md-4">
 
-		<%= link_to "Visits", "#" %>	
+		<%= link_to "Scheduled Appointments", "#" %>	
 	</div>
 </div>
 
@@ -35,8 +37,11 @@
 	<%= link_to image_tag("medicine.png", class: "img-responsive center-block"), root_path %>
 		</div>
 		<div class ="col-md-4">
-			<%= image_tag("newpatient.png", class: "img-responsive center-block") %>
+			<%= image_tag("pastvisits.png", class: "img-responsive center-block") %>
 		</div>
+		<div class ="col-md-4">
+			<%= image_tag("newpatient.png", class: "img-responsive center-block") %>
+		</div>		
 
 	</div>
 
@@ -45,8 +50,12 @@
 			<%= link_to "Medicine Search", "#" %>
 		</div>
 		<div class ="col-md-4">
+		<%= link_to "Past Visits", "#" %>		
+		</div>
+		<div class ="col-md-4">
 			<%= link_to "Add Patient", "#" %>		
 		</div>
+
 	</div>
 
 </div>
