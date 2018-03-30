@@ -1,0 +1,52 @@
+<!-- Rails CSS From: https://stackoverflow.com/questions/11799068/er-method-image-tag-centered -->
+<div class ="container">
+	<div class = "col-md-12">
+		<h1>Dashboard</h1>
+		<hr>
+	</div>
+
+<div class="container mdPaddingBtm">
+	<div class ="col-md-4">
+<%= link_to image_tag("doctor.png", class: "img-responsive center-block"), edit_user_registration_path %>
+	</div>
+	<div class ="col-md-4">
+		<%= image_tag("hospital.png", class: "img-responsive center-block") %>
+	</div>
+	<div class ="col-md-4">
+		<%= image_tag("calendar.png", class: "img-responsive center-block") %>		
+	</div>
+</div>
+
+<div class="container lgPaddingBtm" style ="text-align: center;">
+	<div class ="col-md-4">
+		<%= link_to "My Profile", edit_user_registration_path %>
+	</div>
+	<div class ="col-md-4">
+		<%= link_to "Patients", "#" %>		
+	</div>
+	<div class ="col-md-4">
+
+		<%= link_to "Visits", "#" %>	
+	</div>
+</div>
+
+	<div class="container mdPaddingBtm">
+		<div class ="col-md-4">
+	<%= link_to image_tag("medicine.png", class: "img-responsive center-block"), root_path %>
+		</div>
+		<div class ="col-md-4">
+			<%= image_tag("newpatient.png", class: "img-responsive center-block") %>
+		</div>
+
+	</div>
+
+	<div class="container lgPaddingBtm" style ="text-align: center;">
+		<div class ="col-md-4">
+			<%= link_to "Medicine Search", "#" %>
+		</div>
+		<div class ="col-md-4">
+			<%= link_to "Add Patient", "#" %>		
+		</div>
+	</div>
+
+</div>
