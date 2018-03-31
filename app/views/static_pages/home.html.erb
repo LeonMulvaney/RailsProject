@@ -9,10 +9,10 @@
 
 <div class="container mdPaddingBtm">
 	<div class ="col-md-4">
-<%= link_to image_tag("doctor.png", class: "img-responsive center-block"), edit_user_registration_path %>
+		<%= link_to image_tag("doctor.png", class: "img-responsive center-block"), edit_user_registration_path %>
 	</div>
 	<div class ="col-md-4">
-		<%= image_tag("hospital.png", class: "img-responsive center-block") %>
+		<%= link_to image_tag("hospital.png", class: "img-responsive center-block"), patients_path %>
 	</div>
 	<div class ="col-md-4">
 		<%= image_tag("calendar.png", class: "img-responsive center-block") %>		
@@ -24,7 +24,7 @@
 		<%= link_to "My Profile", edit_user_registration_path %>
 	</div>
 	<div class ="col-md-4">
-		<%= link_to "Patients", "#" %>		
+		<%= link_to "Patients", patients_path %>		
 	</div>
 	<div class ="col-md-4">
 
