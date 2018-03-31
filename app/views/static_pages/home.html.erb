@@ -15,7 +15,7 @@
 		<%= link_to image_tag("hospital.png", class: "img-responsive center-block"), patients_path %>
 	</div>
 	<div class ="col-md-4">
-		<%= image_tag("calendar.png", class: "img-responsive center-block") %>		
+		<%= link_to image_tag("calendar.png", class: "img-responsive center-block"), appointments_path %>		
 	</div>
 </div>
 
@@ -27,8 +27,7 @@
 		<%= link_to "Patients", patients_path %>		
 	</div>
 	<div class ="col-md-4">
-
-		<%= link_to "Scheduled Appointments", "#" %>	
+		<%= link_to "Scheduled Appointments", appointments_path %>	
 	</div>
 </div>
 
