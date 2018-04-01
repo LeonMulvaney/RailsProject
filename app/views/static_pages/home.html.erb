@@ -39,7 +39,7 @@
 			<%= image_tag("pastvisits.png", class: "img-responsive center-block") %>
 		</div>
 		<div class ="col-md-4">
-			<%= link_to image_tag("newpatient.png", class: "img-responsive center-block"), new_patient_path %>
+			<%= image_tag("ambulance.png", class: "img-responsive center-block") %>
 		</div>		
 	</div>
 
@@ -51,7 +51,7 @@
 		<%= link_to "Past Visits", "#" %>		
 		</div>
 		<div class ="col-md-4">
-			<%= link_to "Add Patient", "#" %>		
+			<%= link_to "Hospital Request", "#" %>			
 		</div>
 	</div>
 
@@ -61,10 +61,10 @@
 			<%= link_to image_tag("medicine.png", class: "img-responsive center-block"), root_path %>
 		</div>
 		<div class ="col-md-4">
-			<%= image_tag("pastvisits.png", class: "img-responsive center-block") %>
+			<%= link_to image_tag("appointment.png", class: "img-responsive center-block"), new_appointment_path%>
 		</div>
 		<div class ="col-md-4">
-			<%= image_tag("ambulance.png", class: "img-responsive center-block") %>
+			<%= link_to image_tag("newpatient.png", class: "img-responsive center-block"), new_patient_path %>
 		</div>		
 
 	</div>
@@ -74,10 +74,10 @@
 			<%= link_to "Medicine Search", "#" %>
 		</div>
 		<div class ="col-md-4">
-		<%= link_to "Past Visits", "#" %>		
+		<%= link_to "New Appointment", new_appointment_path %>		
 		</div>
 		<div class ="col-md-4">
-			<%= link_to "Hospital Request", "#" %>		
+			<%= link_to "New Patient", new_patient_path %>
 		</div>
 	</div>
 

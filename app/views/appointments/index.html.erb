@@ -55,6 +55,10 @@
         <%= will_paginate @patients %>
         <br>
         <%= link_to 'New Appointment', new_appointment_path %>
+        <br>
+        <!-- Download Link to PDF - Call to pdf format -->
+
+        <%= link_to "Appointments Report", appointments_path(@appointments, :format => 'pdf'), target: "_blank" %>
       </div>
     </div>
 </div>

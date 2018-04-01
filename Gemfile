@@ -60,3 +60,6 @@ gem 'bootstrap-sass', '3.3.7'
 gem 'ransack' #Used for searching and sorting ActiveRecords From: https://github.com/activerecord-hackery/ransack
 
 gem 'will_paginate' #Pagination Gem From: http://railscasts.com/episodes/240-search-sort-paginate-with-ajax?autoplay=true
+
+gem 'prawn'
+gem 'prawn-table'
