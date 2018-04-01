@@ -9,7 +9,8 @@
       <%= f.label "Search Appointments" %>
       <!-- Search the db using ransack (If any search field contains), parameters From: https://github.com/activerecord-hackery/ransack --> 
       <%= f.search_field :time_or_patient_or_visited_cont,class: 'form-control input-sm'%>
-      <br>
+      <%= f.label "Visited Clinic" %>
+        <%= f.select :visited_cont, ['','True','False' ] ,{}, {class: " form form-group form-control input-sm"}  %>
 
       <%= f.label "Date From:" %>
       <%= f.date_field :date_gteq, class: 'form-control input-sm '%> <!--Starting date must be greater than or equal to value input and less than or equal, this uses the ransack gem parameters -->
@@ -23,6 +24,7 @@
       <%= link_to "Reset Filter",   appointments_path, class: 'btn btn-default fill-div' %>
     </div>
   </div>
+  <h2>Sort via Headings</h2>
   <hr>
   <div class=row>
     <div class="col-md-12">
