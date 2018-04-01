@@ -8,7 +8,7 @@
       <%= search_form_for @q do |f| %> <!--Search form_for (Ransack Requirement) -->
       <%= f.label "Search Appointments" %>
       <!-- Search the db using ransack (If any search field contains), parameters From: https://github.com/activerecord-hackery/ransack --> 
-      <%= f.search_field :date_or_time_or_patient_cont, class: 'form-control input-sm'%>
+      <%= f.search_field :time_or_patient_or_visited_cont, class: 'form-control input-sm'%>
       <br>
 
       <%= f.label "Date From:" %>

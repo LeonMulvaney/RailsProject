@@ -34,7 +34,7 @@
 
     <div class="field">
       <%= form.label :visited %>
-      <%= form.check_box :visited, id: :appointment_visited ,  class: "form-control"%>
+      <%= form.select :visited, ['','True', 'False' ] ,{}, {class: " form form-group form-control"}  %>
 
     </div>
 
