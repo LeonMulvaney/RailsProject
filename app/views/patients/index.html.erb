@@ -8,6 +8,7 @@
 <div class ="col-md-4">
     <%= search_form_for @q do |f| %>
    <%= f.label "Search Patients" %>
+   <!-- Search the db using ransack, parameters From: https://github.com/activerecord-hackery/ransack -->
   <%= f.search_field :name_or_dob_or_address_or_phone_cont, class: 'form-control input-sm'%>
   <br>
   <%= f.submit class: 'btn btn-success' %>

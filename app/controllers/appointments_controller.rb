@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments.json
   def index
       @q = Appointment.all.ransack(params[:q])
-      @appointments = @q.result(distinct: true).paginate(:per_page => 3, :page => params[:page])
+      @appointments = @q.result(distinct: true).paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /appointments/1

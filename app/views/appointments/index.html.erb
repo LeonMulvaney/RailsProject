@@ -8,7 +8,14 @@
         <div class ="col-md-4">
           <%= search_form_for @q do |f| %>
           <%= f.label "Search Appointments" %>
-          <%= f.search_field :date_or_time_or_patient_or_visited_cont, class: 'form-control input-sm'%>
+             <!-- Search the db using ransack (If any search field contains), parameters From: https://github.com/activerecord-hackery/ransack --> 
+          <%= f.search_field :date_or_time_or_patient_cont, class: 'form-control input-sm'%>
+          <br>
+          <%= f.label "Filter Via Date" %>
+          <%= f.label "Date From:" %>
+          <%= f.search_field :date_gteq, class: 'form-control input-sm'%>
+          <%= f.label "Date To:" %>
+          <%= f.search_field :date_lteq, class: 'form-control input-sm'%>
           <br>
           <%= f.submit class: 'btn btn-success' %>
           <%= link_to "Reset Filter",   appointments_path, class: 'btn btn-default' %>
@@ -43,8 +50,9 @@
           <% end %>
         </tbody>
       </table>
-
       <br>
+<%= will_paginate @patients %>
+<br>
 
       <%= link_to 'New Appointment', new_appointment_path %>
       </div>
