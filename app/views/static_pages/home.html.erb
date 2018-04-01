@@ -3,7 +3,7 @@
 	<div class = "col-md-12">
 		<h1>Dashboard</h1>
 		<!--Devise Welcome message from: https://stackoverflow.com/questions/4149326/rails-devise-get-object-of-the-currently-logged-in-user -->
-		<h2>Welcome <br> <%= current_user.email %></h2>
+		<h2>Welcome <br><br> <%= current_user.first_name %> <%= current_user.last_name %> <br><br> <%= current_user.clinic %></h2>
 		<hr>
 	</div>
 
@@ -30,16 +30,41 @@
 		<%= link_to "Scheduled Appointments", appointments_path %>	
 	</div>
 </div>
-
+<hr>
 	<div class="container mdPaddingBtm">
 		<div class ="col-md-4">
-	<%= link_to image_tag("medicine.png", class: "img-responsive center-block"), root_path %>
+			<%= image_tag("prescriptions.png", class: "img-responsive center-block") %>
 		</div>
 		<div class ="col-md-4">
 			<%= image_tag("pastvisits.png", class: "img-responsive center-block") %>
 		</div>
 		<div class ="col-md-4">
 			<%= link_to image_tag("newpatient.png", class: "img-responsive center-block"), new_patient_path %>
+		</div>		
+	</div>
+
+	<div class="container lgPaddingBtm" style ="text-align: center;">
+		<div class ="col-md-4">
+			<%= link_to "Patient Prescriptions", "#" %>
+		</div>
+		<div class ="col-md-4">
+		<%= link_to "Past Visits", "#" %>		
+		</div>
+		<div class ="col-md-4">
+			<%= link_to "Add Patient", "#" %>		
+		</div>
+	</div>
+
+		<hr>
+		<div class="container mdPaddingBtm">
+		<div class ="col-md-4">
+			<%= link_to image_tag("medicine.png", class: "img-responsive center-block"), root_path %>
+		</div>
+		<div class ="col-md-4">
+			<%= image_tag("pastvisits.png", class: "img-responsive center-block") %>
+		</div>
+		<div class ="col-md-4">
+			<%= image_tag("ambulance.png", class: "img-responsive center-block") %>
 		</div>		
 
 	</div>
@@ -52,8 +77,8 @@
 		<%= link_to "Past Visits", "#" %>		
 		</div>
 		<div class ="col-md-4">
-			<%= link_to "Add Patient", "#" %>		
+			<%= link_to "Hospital Request", "#" %>		
 		</div>
-
 	</div>
+
 </div>
