@@ -6,14 +6,14 @@ class AppointmentsController < ApplicationController
   def index
       @q = Appointment.all.ransack(params[:q])
       @appointments = @q.result(distinct: true).paginate(:per_page => 5, :page => params[:page])
-      @a =  #Create instance variable to send via prawn.new() method
+      @searchresult =  @q.result(distinct: true)#Create instance variable to send via prawn.new() method
 
       #Use the Prawn gem to produce a Patients Report
       #From: http://railscasts.com/episodes/153-pdfs-with-prawn-revised?autoplay=true
       respond_to do |format| #Loop when request is made
         format.html
         format.pdf do #Set up the PDF
-          pdf = AppointmentPdf.new(@appointments) #Cast @a instance variable as parameter 
+          pdf = AppointmentPdf.new(@searchresult) #Cast @a instance variable as parameter 
           send_data pdf.render, filename: "Patients Report", #Set the PDF Filename
                                 type: "application/pdf",
                                 disposition: "inline" #Render PDF in browser (Not direct download)
@@ -29,7 +29,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
-    @patients = Patient.all
+    @patients = Patient.all #Instance variable to Allow access to the Patient Model 
   end
 
   # GET /appointments/1/edit
