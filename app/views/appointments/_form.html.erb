@@ -13,9 +13,10 @@
       </div>
     <% end %>
 
+    <!-- Using date date_field helper, populate the date_field with model value From: https://stackoverflow.com/questions/29050095/simple-form-date-field-not-populating-for-edit/29052923#29052923 -->
     <div class="field">
       <%= form.label :date %>
-      <%= form.text_field :date, id: :appointment_date ,  class: "form-control"%>
+      <%= form.date_field :date,  id: :appointment_date , value: form.object.date,  class: "form-control"%>
     </div>
 
     <div class="field">
