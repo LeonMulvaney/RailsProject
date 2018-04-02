@@ -28,9 +28,9 @@ class AppointmentPdf < Prawn::Document
 	end
 
 	def line_item_rows #Create 2d array to store headings, loop through values and then display in table
-		[["Date","Time","Patient Name","Visited"]] +
+		[["Day","Date","Time","Patient Name","Visited"]] +
 	    @appointments.map do |appointment|
-	     [appointment.date, appointment.time, appointment.patient, appointment.visited]
+	     [ Date.parse(appointment.date).strftime("%A"),Date.parse(appointment.date).strftime("%d/%m/%Y"),appointment.time, appointment.patient, appointment.visited]
 	    end
 	end
 

@@ -13,7 +13,7 @@
         <%= f.select :visited_cont, ['','True','False' ] ,{}, {class: " form form-group form-control input-sm"}  %>
 
       <%= f.label "Date From:" %>
-      <%= f.date_field :date_gteq, class: 'form-control input-sm '%> <!--Starting date must be greater than or equal to value input and less than or equal, this uses the ransack gem parameters -->
+      <%= f.date_field :date_gteq,  class: 'form-control input-sm '%> <!--Starting date must be greater than or equal to value input and less than or equal, this uses the ransack gem parameters -->
 
       <%= f.label "Date To:" %>
       <%= f.date_field :date_lteq, class: 'form-control input-sm '%>
@@ -42,7 +42,8 @@
             <tbody>
               <% @appointments.each do |appointment| %>
                 <tr>
-                  <td><%= appointment.date%></td>
+                  <!-- Change Date format from String in Rails From: https://stackoverflow.com/questions/15735591/rails-undefined-method-strftime-for-2013-03-06string -->
+                  <td><%= Date.parse(appointment.date).strftime("%A, %d-%m-%Y")%></td>
                   <td><%= appointment.time %></td>
                   <td><%= appointment.patient %></td>
                   <td><%= appointment.visited %></td>
