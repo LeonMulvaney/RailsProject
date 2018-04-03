@@ -33,6 +33,11 @@
     <%= form.number_field :phone, id: :patient_phone ,  class: "form-control"%>
   </div>
 
+  <div class="field">
+    <%= form.label :allergy_condition %>
+    <%= form.text_field :allergy_condition, id: :patient_allergy_condition ,  class: "form-control"%>
+  </div>
+
   <div class="actions">
     <%= form.submit "Submit", class: 'btn btn-success' %>
   </div>

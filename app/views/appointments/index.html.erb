@@ -1,3 +1,4 @@
+<%= link_to image_tag("back.png", class: "img-responsive"), root_path %>
 <div class="container">
       <p id="notice"><%= notice %></p>
 
@@ -24,7 +25,7 @@
       <%= link_to "Reset Filter",   appointments_path, class: 'btn btn-default fill-div' %>
     </div>
   </div>
-  <h2>Sort via Headings</h2>
+  <h2><i class="fa fa-sort fontawesome"></i> Sort via Headings</h2>
   <hr>
   <div class=row>
     <div class="col-md-12">
@@ -55,16 +56,17 @@
             </tbody>
           </table>
           <br>
-        <%= will_paginate @patients %>
+        <%= will_paginate @patients, class: "pagination"%>
         <br>
-        <%= link_to 'New Appointment', new_appointment_path %>
+         <i class="fa fa-plus fontawesome"></i> <%= link_to 'New Appointment', new_appointment_path %>
+        <br>
         <br>
         <!-- Download Link to PDF - Call to pdf format -->
         <!--Export filtered results to pdf From:
          https://stackoverflow.com/questions/16987242/ransack-export-results-to-csv
          https://stackoverflow.com/questions/31910161/how-to-generate-pdf-based-on-search-using-prawn-in-ruby-on-rails
           -->
-        <%= link_to "Download Report (Current Selection)", appointments_path(params.merge(:format => 'pdf')), target: "_blank" %>
+         <i class="fa fa-download fontawesome"></i> <%= link_to "Download Report (Current Selection)", appointments_path(params.merge(:format => 'pdf')), target: "_blank" %>
       </div>
     </div>
 </div>

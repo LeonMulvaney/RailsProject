@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+ /* Fontawesome icons From: https://richonrails.com/articles/cool-scalable-icons-with-font-awesome */
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
 /* universal */
 
 body {
@@ -128,3 +132,41 @@ footer ul li {
 .fill-div{
   width:100%;
 }
+
+.fa.fontawesome{
+  font-size: 15px;
+}
+
+/*Styling Pagination From: https://gist.github.com/amuino/172248 */
+.pagination {
+    font-size: 12px;
+}
+
+.pagination > * {
+    margin-right: 0.1em;
+    padding: 0.3em 0.4em;
+}
+
+.pagination a:hover {
+    text-color: #171717;
+}
+
+.pagination a:active {
+    text-shadow: none;
+}
+
+.pagination .current {
+    background: #202020 none repeat scroll 0 0;
+    color: white;
+    text-shadow: 1px 1px 1px #171717;
+}
+
+.pagination .disabled {
+    color: #C0C0C0;
+}
+
+.bluebackgrounddiv{
+  background-color:#195A72;
+}
+
+

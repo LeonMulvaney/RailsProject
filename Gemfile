@@ -61,5 +61,10 @@ gem 'ransack' #Used for searching and sorting ActiveRecords From: https://github
 
 gem 'will_paginate' #Pagination Gem From: http://railscasts.com/episodes/240-search-sort-paginate-with-ajax?autoplay=true
 
+#Prawn PDF Gem
 gem 'prawn'
 gem 'prawn-table'
+
+#Font-Awesome Icons From: https://github.com/bokmann/font-awesome-rails
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'

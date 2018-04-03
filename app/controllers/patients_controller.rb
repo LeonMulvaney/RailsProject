@@ -12,6 +12,7 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
+
   end
 
   # GET /patients/new
@@ -69,8 +70,8 @@ class PatientsController < ApplicationController
       @patient = Patient.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    #Permit new attributes after migration From: https://stackoverflow.com/questions/21806545/new-columns-not-saving-in-rails-form-for
     def patient_params
-      params.require(:patient).permit(:name, :dob, :address, :phone)
+      params.require(:patient).permit(:name, :dob, :address, :phone, :allergy_condition)
     end
 end

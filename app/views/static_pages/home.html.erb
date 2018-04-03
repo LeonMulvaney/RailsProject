@@ -1,12 +1,18 @@
 <!-- Rails CSS From: https://stackoverflow.com/questions/11799068/er-method-image-tag-centered -->
 <div class ="container">
-	<div class = "col-md-12">
-		<h1>Dashboard</h1>
-		<!--Devise Welcome message from: https://stackoverflow.com/questions/4149326/rails-devise-get-object-of-the-currently-logged-in-user -->
-		<h2>Welcome <br><br> <%= current_user.first_name %> <%= current_user.last_name %> <br><br> <%= current_user.clinic %></h2>
-		<hr>
+	<div class="row">
+		<div class = "col-md-3">
+			<%= image_tag("hse_logo.png", class: "img-responsive center-block")%>
+		</div>
 	</div>
-
+			<!--Devise Welcome message from: https://stackoverflow.com/questions/4149326/rails-devise-get-object-of-the-currently-logged-in-user -->
+	<div class="row">
+		<div class = "col-md-12">
+			<h1>Dashboard</h1>
+			<h2>Welcome <br><br> <%= current_user.first_name %> <%= current_user.last_name %> <br><br> <%= current_user.clinic %></h2>
+		</div>
+	</div>
+		<hr>
 <div class="container mdPaddingBtm">
 	<div class ="col-md-4">
 		<%= link_to image_tag("doctor.png", class: "img-responsive center-block"), edit_user_registration_path %>
@@ -15,7 +21,7 @@
 		<%= link_to image_tag("hospital.png", class: "img-responsive center-block"), patients_path %>
 	</div>
 	<div class ="col-md-4">
-		<%= link_to image_tag("calendar.png", class: "img-responsive center-block"), appointments_path %>		
+		<%= link_to image_tag("calendar.png", class: "img-responsive center-block"), appointments_path %>	
 	</div>
 </div>
 
