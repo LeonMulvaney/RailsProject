@@ -6,13 +6,23 @@ class PatientsController < ApplicationController
   def index
       @q = Patient.all.ransack(params[:q])
       @patients = @q.result(distinct: true).paginate(:per_page => 3, :page => params[:page])
+      @searchresult = @q.result(distinct: true)
+
+        respond_to do |format| #Loop when request is made
+        format.html
+        format.pdf do #Set up the PDF
+          pdf = PatientPdf.new(@searchresult) #Cast @a instance variable as parameter 
+          send_data pdf.render, filename: "Patients Report", #Set the PDF Filename
+                                type: "application/pdf",
+                                disposition: "inline" #Render PDF in browser (Not direct download)
+       end
+    end
 
   end
 
   # GET /patients/1
   # GET /patients/1.json
   def show
-
   end
 
   # GET /patients/new

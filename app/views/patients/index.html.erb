@@ -58,4 +58,7 @@
 
 <hr>
   <i class="fa fa-plus fontawesome"></i> <%= link_to 'New Patient', new_patient_path %>
+  <br>
+  <br>
+  <i class="fa fa-download fontawesome"></i> <%= link_to "Download Patient Overview (Current Selection)", patients_path(params.merge(:format => 'pdf')), target: "_blank" %>
 
