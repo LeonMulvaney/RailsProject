@@ -5,7 +5,7 @@
 
       <p>
         <strong>Date:</strong>
-        <%= @hospital_referral.date %>
+        <%= Date.parse(@hospital_referral.date).strftime("%d-%m-%Y") %>
       </p>
 
       <p>
@@ -30,6 +30,9 @@
 
       <%= link_to 'Edit', edit_hospital_referral_path(@hospital_referral) %> |
       <%= link_to 'Back', hospital_referrals_path %>
+      <hr>
+      <i class="fa fa-download fontawesome"></i> <%= link_to "Print Referral", hospital_referral_path(@hospital_referral, format: "pdf") %>
+    </div>
     </div>
   </div>
 </div>

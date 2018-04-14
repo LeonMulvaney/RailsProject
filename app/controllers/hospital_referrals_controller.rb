@@ -7,12 +7,36 @@ class HospitalReferralsController < ApplicationController
       @q = HospitalReferral.all.ransack(params[:q])
       @hospital_referrals = @q.result(distinct: true).paginate(:per_page => 5, :page => params[:page])
       @searchresult =  @q.result(distinct: true)#Create instance variable to send via prawn.new() method
+  
+  #PDF Method in both index and Show so can be accessed in either location
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReferralPdf.new(@hospital_referral,@patient)
+        send_data pdf.render, filename: "Hospital Referral",
+                              type: "application/pdf",
+                              disposition: "inline"
+                              
+      end
+    end
   end
 
   # GET /hospital_referrals/1
   # GET /hospital_referrals/1.json
-  def show
+def show
+  @patient = Patient.find(params[:id])# Get the patient model via id
+  @hospital_referral = HospitalReferral.find(params[:id]) #Get the referral obj via id and save to instance variable
+  respond_to do |format|
+    format.html
+    format.pdf do
+      pdf = ReferralPdf.new(@hospital_referral,@patient)
+      send_data pdf.render, filename: "Hospital Referral",
+                            type: "application/pdf",
+                            disposition: "inline"
+                            
+    end
   end
+end
 
   # GET /hospital_referrals/new
   def new

@@ -43,6 +43,7 @@
                 <td><%= hospital_referral.department %></td>
                 <td><%= link_to 'Show', hospital_referral %></td>
                 <td><%= link_to 'Edit', edit_hospital_referral_path(hospital_referral) %></td>
+                <td><%= link_to "Print Referral", hospital_referral_path(hospital_referral, format: "pdf") %></td>
                 <td><%= link_to 'Destroy', hospital_referral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>

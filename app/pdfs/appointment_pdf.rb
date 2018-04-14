@@ -13,8 +13,10 @@
 class AppointmentPdf < Prawn::Document
 
 	def initialize(appointments) #Receive @a from the appointments_controller
-		super(top_margin: 70) #Override to edit margin
+		super(top_margin: 120) #Override to edit margin
 		@appointments = appointments #Create a new instance variable from received params
+		image "app/assets/images/hse_logo.png", :at => [0,710], :width => 200
+		image "app/assets/images/customLogo.png", :at => [440,720], :width => 80
 		text "Appointments Report" 
 		line_items
 	end

@@ -68,3 +68,5 @@ gem 'prawn-table'
 #Font-Awesome Icons From: https://github.com/bokmann/font-awesome-rails
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+ #Add simple calendar to Project From: https://github.com/excid3/simple_calendar
+gem "simple_calendar", "~> 2.0"
