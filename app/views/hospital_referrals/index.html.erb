@@ -9,7 +9,7 @@
       <%= search_form_for @q do |f| %> <!--Search form_for (Ransack Requirement) -->
       <%= f.label "Search Referrals" %>
       <!-- Search the db using ransack (If any search field contains), parameters From: https://github.com/activerecord-hackery/ransack --> 
-      <%= f.search_field :date_or_patient_name_or_referral_reason_or_department_cont,class: 'form-control input-sm'%>
+      <%= f.search_field :date_or_patient_name_or_hospital_name_or_referral_reason_or_department_cont,class: 'form-control input-sm'%>
       <br>
       <%= f.submit class: 'btn btn-info fill-div' %>
       <% end %> <!--End of search by date form -->   

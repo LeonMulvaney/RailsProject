@@ -14,27 +14,55 @@
 #Prawn Documentation From: http://prawnpdf.org/manual.pdf
 #Prawn Text Styling From: http://prawnpdf.org/api-docs/2.0/Prawn/Text.html 
 #Prawn Images From: https://stackoverflow.com/questions/23429319/how-to-insert-image-in-pdf-using-prawn
+#Prawn PDF Table Manual
 class ReferralPdf < Prawn::Document
 
-	def initialize(hospital_referral, patient)
+	def initialize(hospital_referral, patient, user_name, user_clinic, user_email)
 		super(top_margin: 120) #Override to edit margin
 
 		@hospital_referral = hospital_referral #Save variables from
 		@patient = patient
+		@user_name = user_name
+		@user_clinic = user_clinic
+		@user_email = user_email
+
 		image "app/assets/images/hse_logo.png", :at => [0,710], :width => 200
 		image "app/assets/images/customLogo.png", :at => [440,720], :width => 80
 
-		text"Hospital Referral Form" , size: 15, style: :italic, :align => :center
-		text "_____________________________________________", :align => :center
+		text"Hospital Referral Letter" , size: 15, style: :bold_italic, :align => :center
+		text "_____________________________________________ 
 
-		text "Patient Details:", size: 12, style: :italic
-		text "Referral Date:#{hospital_referral.date}", size: 12, style: :italic
-		text "Patient Name:#{hospital_referral.patient_name}", size: 12, style: :italic
-		text "Hospital Referred To:#{hospital_referral.hospital_name}",size: 12, style: :italic
-		text "Reason:#{hospital_referral.referral_reason}", size: 12, style: :italic
-		text "Recommended Department:#{hospital_referral.department}",size: 12, style: :italic
+		", :align => :center
 
-		text "#{patient.address}"
+		text " #{hospital_referral.date}
+		", size: 11, style: :bold_italic
+		text "To whom it may concern, \n\n I, #{user_name} am referring patient #{patient.name} to #{hospital_referral.hospital_name} for further medical attention. 
+		\n My patient has been suffering from #{hospital_referral.referral_reason}. \n
+		 It is recommended that they are assigned a specialist in the #{hospital_referral.department} department.
+		 ",size: 11
+		text "Full Referral Details are as follows: \n\n", size: 11, style: :bold_italic, :bottom_margin =>10
+
+		text "Patient Name: #{hospital_referral.patient_name}", size: 11, style: :italic
+		text "Hospital Referred To: #{hospital_referral.hospital_name}",size: 11, style: :italic
+		text "Reason: #{hospital_referral.referral_reason}",size: 11, style: :italic
+		text "Recommended Department: #{hospital_referral.department} \n\n",size: 11, style: :italic
+
+		text "Full Patient Details:", size: 11, style: :bold_italic, :bottom_margin =>10
+		table ([
+			["Patient Name","Dob","Address","Phone","Allergy/Condition"] , 
+			["#{patient.name}","#{patient.dob}","#{patient.address}","#{patient.phone}","#{patient.allergy_condition}"]
+			]), width: bounds.width
+
+
+
+		text "\n\n If there are any queries please do not hesitate to contact the undersigned."
+		text "
+
+
+		___________________________",size: 11, style: :italic
+
+		 text "#{user_name} 
+		 #{user_clinic}",size: 10, style: :italic
 
 	end
 

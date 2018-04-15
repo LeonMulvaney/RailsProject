@@ -17,7 +17,8 @@ class AppointmentPdf < Prawn::Document
 		@appointments = appointments #Create a new instance variable from received params
 		image "app/assets/images/hse_logo.png", :at => [0,710], :width => 200
 		image "app/assets/images/customLogo.png", :at => [440,720], :width => 80
-		text "Appointments Report" 
+		text "Appointments Report", style: :italic
+		text "Printed: #{Time.now.strftime("%d/%m/%Y")}", style: :italic
 		line_items
 	end
 

@@ -7,12 +7,15 @@ class HospitalReferralsController < ApplicationController
       @q = HospitalReferral.all.ransack(params[:q])
       @hospital_referrals = @q.result(distinct: true).paginate(:per_page => 5, :page => params[:page])
       @searchresult =  @q.result(distinct: true)#Create instance variable to send via prawn.new() method
-  
+      @user_name = "#{current_user.first_name} #{current_user.last_name}" #Combine First and Last Names
+      @user_clinic = current_user.clinic
+      @user_email = current_user.email
+
   #PDF Method in both index and Show so can be accessed in either location
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = ReferralPdf.new(@hospital_referral,@patient)
+        pdf = ReferralPdf.new(@hospital_referral,@patient, @user_name)
         send_data pdf.render, filename: "Hospital Referral",
                               type: "application/pdf",
                               disposition: "inline"
@@ -24,12 +27,17 @@ class HospitalReferralsController < ApplicationController
   # GET /hospital_referrals/1
   # GET /hospital_referrals/1.json
 def show
-  @patient = Patient.find(params[:id])# Get the patient model via id
-  @hospital_referral = HospitalReferral.find(params[:id]) #Get the referral obj via id and save to instance variable
+  @hospital_referral = HospitalReferral.find(params[:id])
+  @name = @hospital_referral.patient_name
+  @patient = Patient.find_by_name(@name)# Get the patient model by name instead of id From: https://stackoverflow.com/questions/5572266/rails-3-find-by-name-instead-of-id
+  @user_name = "#{current_user.first_name} #{current_user.last_name}" #Get current user details
+  @user_clinic = current_user.clinic
+  @user_email = current_user.email
+
   respond_to do |format|
     format.html
     format.pdf do
-      pdf = ReferralPdf.new(@hospital_referral,@patient)
+      pdf = ReferralPdf.new(@hospital_referral,@patient, @user_name, @user_clinic, @user_email)
       send_data pdf.render, filename: "Hospital Referral",
                             type: "application/pdf",
                             disposition: "inline"
