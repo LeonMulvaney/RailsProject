@@ -29,7 +29,7 @@ class ReferralPdf < Prawn::Document
 		image "app/assets/images/hse_logo.png", :at => [0,710], :width => 200
 		image "app/assets/images/customLogo.png", :at => [440,720], :width => 80
 
-		text"Hospital Referral Letter" , size: 15, style: :bold_italic, :align => :center
+		text"Hospital Referral" , size: 15, style: :bold_italic, :align => :center
 		text "_____________________________________________ 
 
 		", :align => :center
