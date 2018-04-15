@@ -2,7 +2,7 @@
 <div class ="container">
 	<div class="row">
 		<div class = "col-md-2">
-			<%= image_tag("customLogo.png", class: "img-responsive center-block", )%>
+			<%= image_tag("customLogo.png", class: "img-responsive center-block" )%>
 		</div>
 		<div class="col-md-6">
 		</div>
@@ -69,7 +69,7 @@
 		<hr>
 		<div class="container mdPaddingBtm">
 		<div class ="col-md-4">
-			<%= link_to image_tag("medicine.png", class: "img-responsive center-block"), root_path %>
+			<%= link_to image_tag("referral.png", class: "img-responsive center-block"), new_hospital_referral_path %>
 		</div>
 		<div class ="col-md-4">
 			<%= link_to image_tag("appointment.png", class: "img-responsive center-block"), new_appointment_path%>
@@ -82,7 +82,7 @@
 
 	<div class="container lgPaddingBtm" style ="text-align: center;">
 		<div class ="col-md-4">
-			<%= link_to "Medicine Search", "#" %>
+			<%= link_to "New Hospital Referral", new_hospital_referral_path %>
 		</div>
 		<div class ="col-md-4">
 		<%= link_to "New Appointment", new_appointment_path %>		

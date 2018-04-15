@@ -20,7 +20,7 @@ class ReferralPdf < Prawn::Document
 	def initialize(hospital_referral, patient, user_name, user_clinic, user_email)
 		super(top_margin: 120) #Override to edit margin
 
-		@hospital_referral = hospital_referral #Save variables from
+		@hospital_referral = hospital_referral #Save parameters as instance variables
 		@patient = patient
 		@user_name = user_name
 		@user_clinic = user_clinic
