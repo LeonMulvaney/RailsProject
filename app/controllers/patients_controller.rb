@@ -34,6 +34,11 @@ class PatientsController < ApplicationController
   def edit
   end
 
+def import
+  Patient.import(params[:file]) #Pass file through file parameter
+  redirect_to patients_path, notice: "Patients Successfully imported." #Notify user of successful import
+end
+
   # POST /patients
   # POST /patients.json
   def create
@@ -84,4 +89,6 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:name, :dob, :address, :phone, :allergy_condition)
     end
+
+
 end

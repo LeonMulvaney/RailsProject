@@ -17,8 +17,12 @@
   <%= link_to "Reset Filter",   patients_path, class: 'btn btn-default' %>
 <% end %>
   </div>
-  <div class ="col-md-4"></div>
-  <div class ="col-md-4"></div>
+  <div class ="col-md-5">
+  </div>
+  <div class ="col-md-3">
+    <p>Condition Overview</p>
+    <%= pie_chart @patients.group(:allergy_condition).count %> 
+  </div>
 </div>
 
 <h2><i class="fa fa-sort fontawesome"></i> Sort via Headings</h2>
@@ -62,3 +66,10 @@
   <br>
   <i class="fa fa-download fontawesome"></i> <%= link_to "Download Patient Overview (Current Selection)", patients_path(params.merge(:format => 'pdf')), target: "_blank" %>
 
+<hr>
+  <p>Import Patients to System (CSV) </p> <!--Form for CSV Uploads-->
+  <%= form_tag import_patients_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <br>
+    <%= submit_tag "Import" %>
+  <% end %>

@@ -70,3 +70,10 @@ gem 'font-awesome-rails'
 gem 'font-awesome-sass'
  #Add simple calendar to Project From: https://github.com/excid3/simple_calendar
 gem "simple_calendar", "~> 2.0"
+
+gem 'whichward'
+
+#Chartkick from: https://github.com/hothero/awesome-rails-gem
+#Installation Instructions From: https://github.com/ankane/chartkick
+#https://richonrails.com/articles/charting-with-chartkick
+gem 'chartkick' 

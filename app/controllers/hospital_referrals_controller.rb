@@ -11,6 +11,7 @@ class HospitalReferralsController < ApplicationController
       @user_clinic = current_user.clinic
       @user_email = current_user.email
 
+
   #PDF Method in both index and Show so can be accessed in either location
     respond_to do |format|
       format.html
@@ -28,16 +29,19 @@ class HospitalReferralsController < ApplicationController
   # GET /hospital_referrals/1.json
 def show
   @hospital_referral = HospitalReferral.find(params[:id])
-  @name = @hospital_referral.patient_name
+  @name = @hospital_referral.patient_name #Get name to search for below
   @patient = Patient.find_by_name(@name)# Get the patient model by name instead of id From: https://stackoverflow.com/questions/5572266/rails-3-find-by-name-instead-of-id
   @user_name = "#{current_user.first_name} #{current_user.last_name}" #Get current user details
   @user_clinic = current_user.clinic
   @user_email = current_user.email
+  @patientdob = Date.parse(@patient.dob).strftime("%Y").to_i
+  @ward = Whichward.check((Time.current.year)-@patientdob)
+
 
   respond_to do |format|
     format.html
     format.pdf do
-      pdf = ReferralPdf.new(@hospital_referral,@patient, @user_name, @user_clinic, @user_email)
+      pdf = ReferralPdf.new(@hospital_referral,@patient, @user_name, @user_clinic, @user_email, @ward)
       send_data pdf.render, filename: "Hospital Referral",
                             type: "application/pdf",
                             disposition: "inline"

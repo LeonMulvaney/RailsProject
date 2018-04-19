@@ -17,7 +17,7 @@
 #Prawn PDF Table Manual
 class ReferralPdf < Prawn::Document
 
-	def initialize(hospital_referral, patient, user_name, user_clinic, user_email)
+	def initialize(hospital_referral, patient, user_name, user_clinic, user_email, ward)
 		super(top_margin: 120) #Override to edit margin
 
 		@hospital_referral = hospital_referral #Save parameters as instance variables
@@ -34,10 +34,10 @@ class ReferralPdf < Prawn::Document
 
 		", :align => :center
 
-		text " #{hospital_referral.date}
+		text " #{Date.parse(hospital_referral.date).strftime("%d-%m-%Y")}
 		", size: 11, style: :bold_italic
 		text "To whom it may concern, \n\n I, #{user_name} am referring patient #{patient.name} to #{hospital_referral.hospital_name} for further medical attention. 
-		\n My patient has been suffering from #{hospital_referral.referral_reason}. \n
+		\n #{patient.name} has been referred due to #{hospital_referral.referral_reason}. \n
 		 It is recommended that they are assigned a specialist in the #{hospital_referral.department} department.
 		 ",size: 11
 		text "Full Referral Details are as follows: \n\n", size: 11, style: :bold_italic, :bottom_margin =>10
@@ -47,7 +47,9 @@ class ReferralPdf < Prawn::Document
 		text "Reason: #{hospital_referral.referral_reason}",size: 11, style: :italic
 		text "Recommended Department: #{hospital_referral.department} \n\n",size: 11, style: :italic
 
-		text "Full Patient Details:", size: 11, style: :bold_italic, :bottom_margin =>10
+		text "#{ward}",size: 11, style: :bold #Prints the ward 
+
+		text "\nFull Patient Details:", size: 11, style: :bold_italic, :bottom_margin =>10
 		table ([
 			["Patient Name","Dob","Address","Phone","Allergy/Condition"] , 
 			["#{patient.name}","#{patient.dob}","#{patient.address}","#{patient.phone}","#{patient.allergy_condition}"]
