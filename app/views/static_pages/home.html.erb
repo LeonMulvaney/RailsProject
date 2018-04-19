@@ -44,7 +44,7 @@
 <hr>
 	<div class="container mdPaddingBtm">
 		<div class ="col-md-4">
-			<%= image_tag("prescriptions.png", class: "img-responsive center-block") %>
+			<%= link_to image_tag("prescriptions.png", class: "img-responsive center-block") , prescriptions_path %>
 		</div>
 		<div class ="col-md-4">
 			<%= image_tag("pastvisits.png", class: "img-responsive center-block") %>
@@ -56,7 +56,7 @@
 
 	<div class="container lgPaddingBtm" style ="text-align: center;">
 		<div class ="col-md-4">
-			<%= link_to "Patient Prescriptions", "#" %>
+			<%= link_to "Patient Prescriptions", prescriptions_path %>
 		</div>
 		<div class ="col-md-4">
 		<%= link_to "Past Visits", "#" %>		
