@@ -71,7 +71,11 @@ gem 'font-awesome-sass'
  #Add simple calendar to Project From: https://github.com/excid3/simple_calendar
 gem "simple_calendar", "~> 2.0"
 
+#Custom get to allocate a patient a hospital ward (Based on age)
 gem 'whichward'
+
+#Custom gem to auto-schedule an appointment if patient is to return for a follow-up visit
+gem 'autoappointment'
 
 #Chartkick from: https://github.com/hothero/awesome-rails-gem
 #Installation Instructions From: https://github.com/ankane/chartkick

@@ -29,18 +29,18 @@ class PrescriptionsController < ApplicationController
 
     #Auto Generate Appointment based on prescription
     #Adding Records From: https://stackoverflow.com/questions/12490076/rails-3-how-to-insert-record-in-database-using-rails
+    #Adding Days to Date From: https://stackoverflow.com/questions/4654457/how-to-add-10-days-to-current-time-in-rails
     @duration = @prescription.duration
     @prescription_date = @prescription.date
-    @new_visit_date = Date.parse(@prescription_date) + @duration
+    @new_visit_date = Date.parse(@prescription_date) + @duration #Get date and add the duration i.e. 7 days 
+    @new_visit_date_as_string = @new_visit_date.to_s #Parse date back into string before sent to Gem
     @patient_name = @prescription.patient_name #Get name to search for below
     @follow_up = @prescription.follow_up
-
     @time = "09:30 AM"
     @visited = "False"
 
-    if @follow_up = "True"
-      @appointment = Appointment.new(:date => @new_visit_date, :time =>@time, :patient => @patient_name, :visited =>@visited)
-      @appointment.save
+    if @follow_up = "True" #If follow up is true, call the Autoappointment Gem, else just save the record
+      Autoappointment.generate(@new_visit_date_as_string, @time, @patient_name, @visited)
 
       respond_to do |format|
         if @prescription.save
@@ -66,7 +66,7 @@ class PrescriptionsController < ApplicationController
       end
     end
 
-  end
+  end #End of Create Method
 
   # PATCH/PUT /prescriptions/1
   # PATCH/PUT /prescriptions/1.json
