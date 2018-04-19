@@ -11,7 +11,7 @@ class PatientsController < ApplicationController
         respond_to do |format| #Loop when request is made
         format.html
         format.pdf do #Set up the PDF
-          pdf = PatientPdf.new(@searchresult) #Cast @a instance variable as parameter 
+          pdf = PatientPdf.new(@searchresult) #Cast @searchresult instance variable as parameter 
           send_data pdf.render, filename: "Patients Report", #Set the PDF Filename
                                 type: "application/pdf",
                                 disposition: "inline" #Render PDF in browser (Not direct download)

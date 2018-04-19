@@ -4,7 +4,8 @@ class PrescriptionsController < ApplicationController
   # GET /prescriptions
   # GET /prescriptions.json
   def index
-    @prescriptions = Prescription.all
+    @q = Prescription.all.ransack(params[:q])
+    @prescriptions = @q.result(distinct: true).paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /prescriptions/1
