@@ -10,8 +10,26 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions/1
   # GET /prescriptions/1.json
-  def show
+def show
+  @prescription = Prescription.find(params[:id])
+  @name = @prescription.patient_name #Get name to search for below
+  @patient = Patient.find_by_name(@name)# Get the patient model by name instead of id From: https://stackoverflow.com/questions/5572266/rails-3-find-by-name-instead-of-id
+  @user_name = "#{current_user.first_name} #{current_user.last_name}" #Get current user details
+  @user_clinic = current_user.clinic
+  @user_email = current_user.email
+
+
+  respond_to do |format|
+    format.html
+    format.pdf do
+      pdf = PrescriptionPdf.new(@prescription,@patient, @user_name, @user_clinic, @user_email)
+      send_data pdf.render, filename: "Medical Prescription",
+                            type: "application/pdf",
+                            disposition: "inline"
+                            
+    end
   end
+end
 
   # GET /prescriptions/new
   def new
@@ -27,22 +45,9 @@ class PrescriptionsController < ApplicationController
   # POST /prescriptions.json
   def create
     @prescription = Prescription.new(prescription_params)
+    @result = Autoappointment.generate(@prescription)
 
-    #Auto Generate Appointment based on prescription
-    #Adding Records From: https://stackoverflow.com/questions/12490076/rails-3-how-to-insert-record-in-database-using-rails
-    #Adding Days to Date From: https://stackoverflow.com/questions/4654457/how-to-add-10-days-to-current-time-in-rails
-    @duration = @prescription.duration
-    @prescription_date = @prescription.date
-    @new_visit_date = Date.parse(@prescription_date) + @duration #Get date and add the duration i.e. 7 days 
-    @new_visit_date_as_string = @new_visit_date.to_s #Parse date back into string before sent to Gem
-    @patient_name = @prescription.patient_name #Get name to search for below
-    @follow_up = @prescription.follow_up
-    @time = "09:30 AM"
-    @visited = "False"
-
-    if @follow_up = "True" #If follow up is true, call the Autoappointment Gem, else just save the record
-      Autoappointment.generate(@new_visit_date_as_string, @time, @patient_name, @visited)
-
+    if @result = "True"
       respond_to do |format|
         if @prescription.save
           format.html { redirect_to @prescription, notice: 'Prescription was successfully created. Follow up appointment scheduled.' }

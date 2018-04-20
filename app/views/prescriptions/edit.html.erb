@@ -1,6 +1,10 @@
+<%= link_to image_tag("back.png", class: "img-responsive"), prescriptions_path %>
+<div class="container">
 <h1>Editing Prescription</h1>
+</div>
 
-<%= render 'form', prescription: @prescription %>
-
-<%= link_to 'Show', @prescription %> |
-<%= link_to 'Back', prescriptions_path %>
+<div class="container">
+	<div class="col-md-6">
+		<%= render 'form', prescription: @prescription %>
+	</div>
+</div>

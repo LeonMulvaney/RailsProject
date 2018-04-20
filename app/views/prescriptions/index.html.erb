@@ -53,9 +53,9 @@
         <td><%= prescription.duration %></td>
         <td><%= prescription.special_instructions %></td>
         <td><%= prescription.follow_up %></td>
-        <td><%= link_to 'Show', prescription %></td>
-        <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
-        <td><%= link_to 'Destroy', prescription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', prescription %></td>
+        <td><%= link_to "Print", prescription_path(prescription, format: "pdf") %></td>
+        <td><%= link_to 'Remove', prescription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
