@@ -11,7 +11,7 @@ module Autoappointment
     #Checking a day via Date From: https://stackoverflow.com/questions/11914422/ruby-check-if-date-is-a-weekend
 
 	#If follow up is True, create new record and return True
-    if @follow_up = "True" 
+    if @follow_up == "True" 
 	    @duration = @prescription.duration
 	    @prescription_date = @prescription.date
 	    @new_visit_date = Date.parse(@prescription_date) + @duration #Get date and add the duration i.e. 7 days 

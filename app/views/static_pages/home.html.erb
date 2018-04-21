@@ -47,7 +47,7 @@
 			<%= link_to image_tag("prescriptions.png", class: "img-responsive center-block") , prescriptions_path %>
 		</div>
 		<div class ="col-md-4">
-			<%= image_tag("pastvisits.png", class: "img-responsive center-block") %>
+			<%= link_to image_tag("pills.png", class: "img-responsive center-block"), "http://www.hpra.ie/homepage/medicines/medicines-information/find-a-medicine" %>
 		</div>
 		<div class ="col-md-4">
 			<%= link_to image_tag("ambulance.png", class: "img-responsive center-block"), hospital_referrals_path %>
@@ -59,7 +59,7 @@
 			<%= link_to "Patient Prescriptions", prescriptions_path %>
 		</div>
 		<div class ="col-md-4">
-		<%= link_to "Past Visits", "#" %>		
+		<%= link_to "Medicine Search", "http://www.hpra.ie/homepage/medicines/medicines-information/find-a-medicine" %>		
 		</div>
 		<div class ="col-md-4">
 			<%= link_to "Hospital Referrals", hospital_referrals_path %>			

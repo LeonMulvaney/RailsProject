@@ -47,7 +47,7 @@ end
     @prescription = Prescription.new(prescription_params)
     @result = Autoappointment.generate(@prescription)
 
-    if @result = "True"
+    if @result == "True"
       respond_to do |format|
         if @prescription.save
           format.html { redirect_to @prescription, notice: 'Prescription was successfully created. Follow up appointment scheduled.' }
