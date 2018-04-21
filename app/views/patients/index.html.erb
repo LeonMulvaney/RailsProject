@@ -66,10 +66,3 @@
   <br>
   <i class="fa fa-download fontawesome"></i> <%= link_to "Download Patient Overview (Current Selection)", patients_path(params.merge(:format => 'pdf')), target: "_blank" %>
 
-<hr>
-  <p>Import Patients to System (CSV) </p> <!--Form for CSV Uploads-->
-  <%= form_tag import_patients_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <br>
-    <%= submit_tag "Import" %>
-  <% end %>
